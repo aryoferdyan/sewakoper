@@ -183,76 +183,198 @@
             <div class="hire">
               <h2>Amankan Kopermu</h2>
               <form class="work-request" id="waForm">
+                <h2>Form Penyewaan Koper</h2>
+              
                 <div class="work-request--information">
-                  <div class="information-name">
-                    <label for="name">Nama</label>
-                    <input id="name" type="text" placeholder="Masukkan nama koper">
-                  </div>
+                  <input id="name" type="text" placeholder="Nama Kamu" required>
                 </div>
+                
                 <div class="work-request--information">
-                  <div class="information-name">
-                    <label for="size">Ukuran Koper</label>
-                    <select id="size">
-                      <option value="" disabled selected>Pilih ukuran koper</option>
-                      <option value="18 inci">18 Inci</option>
-                      <option value="20 inci">20 Inci</option>
-                      <option value="24 inci">24 Inci</option>
-                    </select>
-                  </div>
+                  <select id="size" required>
+                    <option value="" disabled selected>Pilih ukuran koper</option>
+                    <option value="18 inci">18 Inci</option>
+                    <option value="20 inci">20 Inci</option>
+                    <option value="24 inci">24 Inci</option>
+                  </select>
                 </div>
+                
                 <div class="work-request--information">
-                  <div class="information-email">
-                    <input id="pickup-date" type="date">
-                    <label for="pickup-date">Pickup Date</label>
-                  </div>
+                  <div class="date-label">Tanggal Pengambilan:</div>
+                  <input id="pickup-date" type="date" placeholder="Tanggal Pengambilan" required>
                 </div>
+                
                 <div class="work-request--information">
-                  <div class="information-email">
-                    <input id="return-date" type="date">
-                    <label for="return-date">Return Date</label>
-                  </div>
+                  <div class="date-label">Tanggal Pengembalian:</div>
+                  <input id="return-date" type="date" placeholder="Tanggal Pengembalian" required>
                 </div>
+                
+                <div class="work-request--information">
+                  <div class="date-label">Lama Hari:</div>
+                  <input id="days-count" type="text" readonly placeholder="Lama Hari">
+                </div>
+                
+                <div class="work-request--information">
+                  <div class="date-label">Harga:</div>
+                  <input id="price" type="text" readonly placeholder="Harga">
+                </div>
+                
                 <input type="button" id="sendButton" value="Send Request">
               </form>
-            </div>
-          </li>
-          
-          
-          <script>
-          document.getElementById("sendButton").addEventListener("click", function () {
-  // Get user inputs
-  const name = document.getElementById("name").value;
-  const size = document.getElementById("size").value;
-  const pickupDate = document.getElementById("pickup-date").value;
-  const returnDate = document.getElementById("return-date").value;
-
-  // Validate inputs
-  if (!name || !size || !pickupDate || !returnDate) {
-    alert("Silakan isi semua bidang sebelum mengirim.");
-    return;
-  }
-
-  // Format dates
-  const pickupDateFormatted = new Date(pickupDate).toLocaleDateString('id-ID', {
-    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-  });
-  const returnDateFormatted = new Date(returnDate).toLocaleDateString('id-ID', {
-    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-  });
-
-  // Construct WhatsApp message URL
-  const phoneNumber = "6288216528586"; // Nomor WhatsApp Anda
-  const message = `Halo, apakah ready koper dengan ukuran ${size},%0A` +
-                  `Nama: ${name},%0A` +
-                  `Tanggal pengambilan: ${pickupDateFormatted},%0A` +
-                  `Tanggal pengembalian: ${returnDateFormatted}`;
-  const waURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-
-  // Redirect to WhatsApp
-  window.open(waURL, "_blank");
-});
-
-          </script>
+              
+              <style>
+                /* Gaya umum untuk form */
+                #waForm {
+                  color: #333;
+                  font-family: Arial, sans-serif;
+                  max-width: 500px;
+                  margin: 30px auto;
+                  padding: 25px;
+                  background-color: #f9f9f9;
+                  border-radius: 8px;
+                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                }
+              
+                /* Gaya untuk judul form */
+                #waForm h2 {
+                  text-align: center;
+                  font-size: 24px;
+                  margin-bottom: 30px;
+                  font-weight: bold;
+                }
+              
+                /* Gaya untuk setiap elemen dalam form */
+                .work-request--information {
+                  margin-bottom: 20px; /* Menambah jarak antar elemen form */
+                }
+              
+                /* Gaya untuk input teks dan select */
+                #name, #size, #pickup-date, #return-date, #days-count, #price {
+                  width: 100%;
+                  padding: 12px;
+                  font-size: 14px;
+                  border: 1px solid #ccc;
+                  border-radius: 4px;
+                  background-color: #fff;
+                  color: #000;
+                }
+              
+                /* Gaya untuk input fokus */
+                #name:focus, #size:focus, #pickup-date:focus, #return-date:focus, #days-count:focus, #price:focus {
+                  border-color: #007BFF;
+                  outline: none;
+                }
+              
+                /* Gaya untuk tombol kirim */
+                #sendButton {
+                  background-color: #007BFF;
+                  color: #fff;
+                  padding: 15px;
+                  font-size: 16px;
+                  border: none;
+                  border-radius: 4px;
+                  cursor: pointer;
+                  width: 100%;
+                  transition: background-color 0.3s ease;
+                }
+              
+                #sendButton:hover {
+                  background-color: #0056b3;
+                }
+              
+                /* Gaya untuk div label */
+                .date-label {
+                  font-size: 14px;
+                  color: #333;
+                  margin-bottom: 8px;
+                  font-weight: bold;
+                }
+              
+                /* Menambah jarak antar elemen input dengan div label */
+                .work-request--information input[type="date"],
+                .work-request--information input[type="text"],
+                .work-request--information select {
+                  margin-top: 5px; /* Mengatur jarak antara label dan input */
+                }
+              </style>
+              
+              <script>
+              document.getElementById("return-date").addEventListener("input", function () {
+                const pickupDate = document.getElementById("pickup-date").value;
+                const returnDate = document.getElementById("return-date").value;
+                const size = document.getElementById("size").value;
+              
+                // Pastikan tanggal pengambilan dan pengembalian sudah diisi
+                if (!pickupDate || !returnDate || !size) {
+                  return; // Tidak melakukan apa-apa jika input belum lengkap
+                }
+              
+                // Calculate the number of days between pickup and return dates
+                const pickup = new Date(pickupDate);
+                const returnDateObj = new Date(returnDate);
+                const diffTime = returnDateObj - pickup;
+                const diffDays = diffTime / (1000 * 3600 * 24); // convert milliseconds to days
+                document.getElementById("days-count").value = diffDays;
+              
+                // Set price based on size
+                let pricePerDay = 0;
+                switch (size) {
+                  case "18 inci":
+                    pricePerDay = 10000;
+                    break;
+                  case "20 inci":
+                    pricePerDay = 13000;
+                    break;
+                  case "24 inci":
+                    pricePerDay = 15000;
+                    break;
+                }
+              
+                const totalPrice = pricePerDay * diffDays;
+                document.getElementById("price").value = `Rp ${totalPrice.toLocaleString()}`;
+              });
+              
+              document.getElementById("sendButton").addEventListener("click", function () {
+                // Get user inputs
+                const name = document.getElementById("name").value;
+                const size = document.getElementById("size").value;
+                const pickupDate = document.getElementById("pickup-date").value;
+                const returnDate = document.getElementById("return-date").value;
+                const daysCount = document.getElementById("days-count").value;
+                const price = document.getElementById("price").value;
+              
+                // Validate inputs
+                if (!name || !size || !pickupDate || !returnDate || !daysCount || !price) {
+                  alert("Silakan isi semua bidang sebelum mengirim.");
+                  return;
+                }
+              
+                // Format dates
+                const pickupDateFormatted = new Date(pickupDate).toLocaleDateString('id-ID', {
+                  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+                });
+                const returnDateFormatted = new Date(returnDate).toLocaleDateString('id-ID', {
+                  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+                });
+              
+                // Construct WhatsApp message URL
+                const phoneNumber = "6288216528586"; // Nomor WhatsApp Anda
+                let message = `Halo, apakah ready koper dengan ukuran ${size}%0A` +
+                              `Nama: ${name}%0A` +
+                              `Tanggal pengambilan: ${pickupDateFormatted}%0A` +
+                              `Tanggal pengembalian: ${returnDateFormatted}%0A` +
+                              `Lama hari: ${daysCount} hari%0A` +
+                              `Harga: Rp ${price}`;
+              
+                // Pastikan tidak ada double encoding dengan mengganti %0A terlebih dahulu sebelum encodeURIComponent
+                message = message.replace(/%0A/g, "\n");
+              
+                const waURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+              
+                // Redirect to WhatsApp
+                window.open(waURL, "_blank");
+              });
+              </script>
+              
           
         </ul>
       </div>
