@@ -209,12 +209,12 @@
                 </div>
                 
                 <div class="work-request--information">
-                  <div class="date-label">Lama Hari:</div>
+                  <!-- <div class="date-label">Lama Hari:</div> -->
                   <input id="days-count" type="text" readonly placeholder="Lama Hari">
                 </div>
                 
                 <div class="work-request--information">
-                  <div class="date-label">Harga:</div>
+                  <!-- <div class="date-label">Harga:</div> -->
                   <input id="price" type="text" readonly placeholder="Harga">
                 </div>
                 
@@ -226,7 +226,7 @@
                 #waForm {
                   color: #333;
                   font-family: Arial, sans-serif;
-                  max-width: 500px;
+                  max-width: 300px;
                   margin: 30px auto;
                   padding: 25px;
                   background-color: #f9f9f9;
@@ -350,7 +350,7 @@
                 const returnDateObj = new Date(returnDate);
                 const diffTime = returnDateObj - pickup;
                 const diffDays = diffTime / (1000 * 3600 * 24); // convert milliseconds to days
-                document.getElementById("days-count").value = diffDays;
+                document.getElementById("days-count").value = diffDays+" Hari";
               
                 // Set price based on size
                 let pricePerDay = 0;
@@ -395,10 +395,9 @@
               
                 // Construct WhatsApp message URL
                 const phoneNumber = "6288216528586"; // Nomor WhatsApp Anda
-                let message = `Halo, apakah ready koper dengan ukuran ${size}%0A` +
-                              `Nama: ${name}%0A` +
-                              `Tanggal pengambilan: ${pickupDateFormatted}%0A` +
-                              `Tanggal pengembalian: ${returnDateFormatted}%0A` +
+                let message = `Halo saya ${name}, apakah ready koper dengan ukuran ${size}%0A` +                      
+                              `Pengambilan: ${pickupDateFormatted}%0A` +
+                              `Pengembalian: ${returnDateFormatted}%0A` +
                               `Lama hari: ${daysCount} hari%0A` +
                               `Harga: Rp ${price}`;
               
