@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Global</title>
+  <title>Sewa Koper Solo - Sewa Koper termurah di Soloraya</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,9 +16,9 @@
 <div class="device-notification">
   <a class="device-notification--logo" href="#0">
     <img src="assets/img/logo.png" alt="Global">
-    <p>Global</p>
+    <p>Koperins - Sewa Koper Solo</p>
   </a>
-  <p class="device-notification--message">Global has so much to offer that we must request you orient your device to portrait or find a larger screen. You won't be disappointed.</p>
+  <p class="device-notification--message">Sewa koper termurah di Solo</p>
 </div>
 
 <div class="perspective effect-rotate-left">
@@ -28,7 +28,7 @@
         <header class="header">
           <a class="header--logo" href="#0">
             <img src="assets/img/logo.png" alt="Global">
-            <p>Global</p>
+            <p>KoperIns</p>
           </a>
           <button class="header--cta cta">Hire Us</button>
           <div class="header--nav-toggle">
@@ -294,6 +294,43 @@
                 .work-request--information input[type="text"],
                 .work-request--information select {
                   margin-top: 5px; /* Mengatur jarak antara label dan input */
+                }
+              
+                /* Media Queries untuk Responsif */
+                @media (max-width: 600px) {
+                  /* Memperkecil ukuran font untuk ponsel */
+                  #waForm h2 {
+                    font-size: 20px;
+                  }
+              
+                  /* Menambah jarak antar elemen di ponsel */
+                  .work-request--information {
+                    margin-bottom: 15px;
+                  }
+              
+                  /* Mengatur tombol agar lebih besar dan mudah diakses di ponsel */
+                  #sendButton {
+                    padding: 18px;
+                    font-size: 18px;
+                  }
+              
+                  /* Mengatur ukuran input dan select agar lebih mudah diakses */
+                  #name, #size, #pickup-date, #return-date, #days-count, #price {
+                    font-size: 16px;
+                    padding: 14px;
+                  }
+              
+                  /* Mengurangi padding form agar pas di layar kecil */
+                  #waForm {
+                    padding: 20px;
+                  }
+                }
+              
+                /* Untuk layar lebih besar dari ponsel */
+                @media (min-width: 601px) and (max-width: 1024px) {
+                  #waForm {
+                    max-width: 600px;
+                  }
                 }
               </style>
               
