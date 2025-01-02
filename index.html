@@ -185,6 +185,12 @@
               <form class="work-request" id="waForm">
                 <div class="work-request--information">
                   <div class="information-name">
+                    <label for="name">Nama</label>
+                    <input id="name" type="text" placeholder="Masukkan nama koper">
+                  </div>
+                </div>
+                <div class="work-request--information">
+                  <div class="information-name">
                     <label for="size">Ukuran Koper</label>
                     <select id="size">
                       <option value="" disabled selected>Pilih ukuran koper</option>
@@ -192,7 +198,7 @@
                       <option value="20 inci">20 Inci</option>
                       <option value="24 inci">24 Inci</option>
                     </select>
-                  </div>                  
+                  </div>
                 </div>
                 <div class="work-request--information">
                   <div class="information-email">
@@ -206,70 +212,46 @@
                     <label for="return-date">Return Date</label>
                   </div>
                 </div>
-              <style>
-                /* Form background and text colors */
-form.work-request {
-  background-color: #000; /* Hitam untuk latar belakang */
-  color: #fff; /* Putih untuk teks */
-}
-
-/* Labels and input text */
-form.work-request label {
-  color: #fff; /* Putih untuk label teks */
-}
-
-form.work-request input[type="date"],
-form.work-request select {
-  background-color: #000; /* Hitam untuk latar belakang input */
-  color: #fff; /* Putih untuk teks */
-  border: 1px solid #fff; /* Putih untuk border */
-}
-
-/* Placeholder color */
-form.work-request select option {
-  background-color: #000; /* Hitam untuk pilihan dropdown */
-  color: #fff; /* Putih untuk teks dropdown */
-}
-
-
-
-              </style>
                 <input type="button" id="sendButton" value="Send Request">
               </form>
             </div>
           </li>
           
+          
           <script>
-            document.getElementById("sendButton").addEventListener("click", function () {
-              // Get user inputs
-              const name = document.getElementById("name").value;
-              const pickupDate = document.getElementById("pickup-date").value;
-              const returnDate = document.getElementById("return-date").value;
-          
-              // Validate inputs
-              if (!name || !pickupDate || !returnDate) {
-                alert("Please fill all the fields before sending.");
-                return;
-              }
-          
-              // Format dates
-              const pickupDateFormatted = new Date(pickupDate).toLocaleDateString('id-ID', {
-                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-              });
-              const returnDateFormatted = new Date(returnDate).toLocaleDateString('id-ID', {
-                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-              });
-          
-              // Construct WhatsApp message URL
-              const phoneNumber = "6288216528586"; // Your WhatsApp number
-              const message = `Halo, apakah ready koper ${name},%0A` +
-                              `tanggal pengambilan ${pickupDateFormatted}%0A` +
-                              `tanggal pengembalian ${returnDateFormatted}`;
-              const waURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-          
-              // Redirect to WhatsApp
-              window.open(waURL, "_blank");
-            });
+          document.getElementById("sendButton").addEventListener("click", function () {
+  // Get user inputs
+  const name = document.getElementById("name").value;
+  const size = document.getElementById("size").value;
+  const pickupDate = document.getElementById("pickup-date").value;
+  const returnDate = document.getElementById("return-date").value;
+
+  // Validate inputs
+  if (!name || !size || !pickupDate || !returnDate) {
+    alert("Silakan isi semua bidang sebelum mengirim.");
+    return;
+  }
+
+  // Format dates
+  const pickupDateFormatted = new Date(pickupDate).toLocaleDateString('id-ID', {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+  });
+  const returnDateFormatted = new Date(returnDate).toLocaleDateString('id-ID', {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+  });
+
+  // Construct WhatsApp message URL
+  const phoneNumber = "6288216528586"; // Nomor WhatsApp Anda
+  const message = `Halo, apakah ready koper dengan ukuran ${size},%0A` +
+                  `Nama: ${name},%0A` +
+                  `Tanggal pengambilan: ${pickupDateFormatted},%0A` +
+                  `Tanggal pengembalian: ${returnDateFormatted}`;
+  const waURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+  // Redirect to WhatsApp
+  window.open(waURL, "_blank");
+});
+
           </script>
           
         </ul>
