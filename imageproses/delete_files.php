@@ -23,7 +23,7 @@ if (isset($_GET['files']) && isset($_GET['processed'])) {
     }
 
     // Redirect ke halaman utama setelah menghapus file
-    header("Location: http://localhost/formatweb/");
+    header("Location: https://sewakoper.my.id/imageproses/");
     exit();
 }
 ?>
